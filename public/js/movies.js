@@ -134,35 +134,8 @@ $(document).ready(function(){
 
         emailInput.removeClass('border border-danger');
         phoneInput.removeClass('border border-danger');
-        if (!email.length && !phone.length) {
-            emailInput.addClass('border border-danger');
-            phoneInput.addClass('border border-danger');
-            $.notify({
-                message: "Please enter email address or phone number"
-            },{
-                type: 'danger',
-                delay: 4000,
-            });
-        }
-        else if (email.length && !isEmail(email)) {
-            emailInput.addClass('border border-danger');
-            $.notify({
-                message: "Please enter correct email address"
-            },{
-                type: 'danger',
-                delay: 4000,
-            });
-        }
-        else if (phone.length && !isPhoneNumber(phone)) {
-            phoneInput.addClass('border border-danger');
-            $.notify({
-                message: "Please enter correct phone number"
-            },{
-                type: 'danger',
-                delay: 4000,
-            });
-        }
-        else {
+
+        if (email.length && phone.length && isEmail(email) && isPhoneNumber(phone)) {
             $.ajax({
                 url: 'reserve-place.php',
                 type: 'POST',
@@ -190,6 +163,53 @@ $(document).ready(function(){
                     }
                 }
             });
+        } else {
+            if (!email.length && !phone.length) {
+                emailInput.addClass('border border-danger');
+                phoneInput.addClass('border border-danger');
+                $.notify({
+                    message: "Please enter email address and phone number"
+                },{
+                    type: 'danger',
+                    delay: 4000,
+                });
+            }
+            if (email.length && !phone.length) {
+                phoneInput.addClass('border border-danger');
+                $.notify({
+                    message: "Phone number is required"
+                },{
+                    type: 'danger',
+                    delay: 4000,
+                });
+            }
+            if (!email.length && phone.length) {
+                emailInput.addClass('border border-danger');
+                $.notify({
+                    message: "Phone number is required"
+                },{
+                    type: 'danger',
+                    delay: 4000,
+                });
+            }
+            if (email.length && !isEmail(email)) {
+                emailInput.addClass('border border-danger');
+                $.notify({
+                    message: "Please enter correct email address"
+                },{
+                    type: 'danger',
+                    delay: 4000,
+                });
+            }
+            if (phone.length && !isPhoneNumber(phone)) {
+                phoneInput.addClass('border border-danger');
+                $.notify({
+                    message: "Please enter correct phone number"
+                },{
+                    type: 'danger',
+                    delay: 4000,
+                });
+            }
         }
     });
 

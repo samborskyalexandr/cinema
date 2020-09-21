@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Enter your phone number or email</h5>
+                <h5 class="modal-title">Enter your phone number and email</h5>
                 <button type="button" class="close"
                         data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -38,14 +38,14 @@
                     <div class="form-group m-3">
                         <div class="row">
                             <label>Phone Number</label>
-                            <input type="text" name="phone" id="phone" class="form-control" placeholder="123-456-7890">
+                            <input type="text" name="phone" id="phone" class="form-control" placeholder="123-456-7890" required>
                         </div>
                     </div>
 
                     <div class="form-group m-3">
                         <div class="row">
                             <label>Email</label>
-                            <input type="email" name="email" id="email" class="form-control">
+                            <input type="email" name="email" id="email" class="form-control" required>
                         </div>
                     </div>
                 </form>
